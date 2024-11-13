@@ -32,7 +32,7 @@ Whisper’s architecture is designed to manage varied inputs, tasks, and languag
 ### 1. Audio Processing (Spectrogram Conversion)
 Whisper processes raw audio by converting it into an 80-channel Mel spectrogram, a visual map representing sound frequencies over time. This spectrogram captures essential features of the audio, such as pitch and intensity, and serves as the foundation for recognizing speech patterns.
 
-```
+```python
 def load_and_process_audio(file_path):
     """
     Load audio file and transform it into an 80-channel log-magnitude Mel spectrogram.
@@ -60,7 +60,7 @@ def load_and_process_audio(file_path):
 ### 2. Encoding: Extracting Speech Features
 Once the spectrogram is created, Whisper’s encoder processes it to isolate important speech patterns while reducing irrelevant noise. The encoder uses convolutional layers to capture primary sound features and transformer encoder blocks to refine these features further.
 
-```
+```python
 def encode_audio(spectrogram):
     """
     Encode the spectrogram to produce a sequence of feature representations.
@@ -83,7 +83,7 @@ def encode_audio(spectrogram):
 ### 3. Special Task Tokens for Multitask Flexibility
 Whisper incorporates task tokens that specify the desired task (transcription, translation) and the target language, allowing it to perform multiple tasks without additional fine-tuning.
 
-```
+```python
 def prepare_task_tokens(task, language):
     """
     Prepare tokens that tell the decoder what task to perform (e.g., transcription or translation)
@@ -103,7 +103,7 @@ def prepare_task_tokens(task, language):
 ### 4. Decoding: Generating Text from Audio Features
 After encoding, Whisper’s decoder generates text from the encoded features, predicting one word at a time based on the prior context provided by task tokens.
 
-```
+```python
 def decode_to_text(encoded_features, task_tokens, previous_text_tokens=None):
     """
     The decoder translates encoded audio features into a sequence of text tokens, 
